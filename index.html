@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101014">
+  <meta name="description" content="CineVault — your personal cinema library.">
+  <title>CineVault — Your Personal Cinema</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top" aria-label="CineVault home">
+        <span class="brand-icon">C</span><span>CINE<span class="gold">VAULT</span></span>
+      </a>
+      <p class="sidebar-label">YOUR SPACE</p>
+      <nav class="navigation" aria-label="Main navigation">
+        <a class="nav-link active" href="#top"><span>⌂</span> Overview</a>
+        <a class="nav-link" href="#library"><span>▤</span> My library</a>
+        <a class="nav-link" href="#discover"><span>⌕</span> Discover films</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-card">
+          <div class="sidebar-card-icon">✦</div>
+          <h3>Your own little cinema.</h3>
+          <p>Keep the films you love, track what you have watched, and find your next favourite.</p>
+        </div>
+        <div class="sidebar-footer">MADE FOR THE LOVE OF <span>FILM</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="top">
+      <header class="topbar">
+        <div><p class="eyebrow">YOUR PERSONAL COLLECTION</p><h1>Good evening, <em>cinephile.</em></h1></div>
+        <button class="primary-button" id="open-add" type="button">＋ Add a movie</button>
+      </header>
+
+      <section class="welcome-banner">
+        <div class="welcome-content">
+          <span class="welcome-tag">THE ART OF YOUR WATCHLIST</span>
+          <h2>Every film has a story.<br><em>Keep yours close.</em></h2>
+          <p>A thoughtfully curated home for the films you have watched, the ones you love, and the stories still waiting for you.</p>
+          <a class="banner-link" href="#discover">Find your next film <span>→</span></a>
+        </div>
+        <div class="banner-decoration" aria-hidden="true"><div class="film-ring ring-one"></div><div class="film-ring ring-two"></div><div class="film-symbol">✦</div></div>
+      </section>
+
+      <section class="stats-grid" aria-label="Library statistics">
+        <article class="stat-card"><div class="stat-top">Total movies <span class="stat-icon">▤</span></div><strong id="stat-total">0</strong><small>In your collection</small></article>
+        <article class="stat-card"><div class="stat-top">Watched <span class="stat-icon">✓</span></div><strong id="stat-watched">0</strong><small>Stories experienced</small></article>
+        <article class="stat-card"><div class="stat-top">To watch <span class="stat-icon">◷</span></div><strong id="stat-watchlist">0</strong><small>Still on your list</small></article>
+        <article class="stat-card"><div class="stat-top">Your average <span class="stat-icon">★</span></div><strong id="stat-rating">—</strong><small>Your personal ratings</small></article>
+      </section>
+
+      <section class="progress-section">
+        <div><p class="eyebrow">YOUR CINEMA JOURNEY</p><h3>Collection progress</h3></div>
+        <div class="progress-info"><strong id="progress-percent">0%</strong><span id="progress-label">0 of 0 watched</span></div>
+        <div class="progress-track"><div id="progress-fill"></div></div>
+      </section>
+
+      <section class="library-section" id="library">
+        <div class="section-heading"><div><p class="eyebrow">THE COLLECTION</p><h2>My library</h2></div><span class="result-count" id="result-count">0 films</span></div>
+        <div class="toolbar">
+          <label class="search-box"><span>⌕</span><input id="movie-search" type="search" placeholder="Search your collection..." autocomplete="off"><kbd>/</kbd></label>
+          <select id="sort-movies" aria-label="Sort movies">
+            <option value="added">Recently added</option><option value="title">Title A–Z</option><option value="year">Release year</option><option value="rating">Highest rated</option>
+          </select>
+        </div>
+        <div class="filter-row" id="filter-row">
+          <button class="filter-button active" data-filter="all">All films</button>
+          <button class="filter-button" data-filter="watchlist">Want to watch</button>
+          <button class="filter-button" data-filter="watched">Watched</button>
+          <button class="filter-button" data-filter="favorites">★ Favourites</button>
+        </div>
+        <div class="movie-grid" id="movie-list"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <div class="empty-icon">🎞</div><h3>Your collection is waiting.</h3><p>Add a movie manually or discover one below.</p>
+          <button class="primary-button" id="empty-add" type="button">Add your first movie</button>
+        </div>
+      </section>
+
+      <section class="discover-section" id="discover">
+        <div class="section-heading"><div><p class="eyebrow">POWERED BY TMDB</p><h2>Discover films</h2></div><span class="result-count">Find something new</span></div>
+        <p class="discover-intro">Search thousands of movies. When one catches your eye, add it straight to your personal library.</p>
+        <form class="discover-search" id="discover-form">
+          <span>⌕</span><input id="discover-input" type="search" placeholder="Search by movie title..." autocomplete="off" aria-label="Search TMDB movies">
+          <button class="primary-button" type="submit">Search</button>
+        </form>
+        <p class="discover-status" id="discover-status" aria-live="polite">Try searching for a title like “Inception” or “Dune”.</p>
+        <div class="movie-grid discover-grid" id="discover-results"></div>
+      </section>
+
+      <footer class="main-footer"><span>© 2026 CINEVAULT</span><span>A PERSONAL SPACE FOR GREAT STORIES</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="movie-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <div class="modal-header"><div><p class="eyebrow">YOUR COLLECTION</p><h2 id="modal-title">Add a movie</h2></div><button class="close-button" data-close="movie-modal" aria-label="Close">×</button></div>
+      <form id="movie-form">
+        <input type="hidden" id="movie-id">
+        <input type="hidden" id="movie-tmdb-id">
+        <label for="movie-title">Movie title</label><input id="movie-title" required maxlength="120" placeholder="e.g. The Grand Budapest Hotel">
+        <div class="form-row">
+          <div><label for="movie-year">Release year</label><input id="movie-year" type="number" min="1888" max="2100" placeholder="2024"></div>
+          <div><label for="movie-genre">Genre</label><input id="movie-genre" maxlength="60" placeholder="Drama, Sci-Fi"></div>
+        </div>
+        <label for="movie-poster">Poster image URL (optional)</label><input id="movie-poster" type="url" placeholder="https://...">
+        <div class="form-row">
+          <div><label for="movie-status">Your status</label><select id="movie-status"><option value="watchlist">Want to watch</option><option value="watched">Watched</option></select></div>
+          <div><label for="movie-rating">Your rating</label><select id="movie-rating"><option value="">Not rated</option><option value="5">★★★★★ · 5</option><option value="4">★★★★☆ · 4</option><option value="3">★★★☆☆ · 3</option><option value="2">★★☆☆☆ · 2</option><option value="1">★☆☆☆☆ · 1</option></select></div>
+        </div>
+        <label for="movie-notes">Personal notes (optional)</label><textarea id="movie-notes" rows="3" maxlength="600" placeholder="What did you think?"></textarea>
+        <label class="favorite-toggle"><input id="movie-favorite" type="checkbox"> Mark as a favourite</label>
+        <div class="modal-actions"><button class="secondary-button" type="button" data-close="movie-modal">Cancel</button><button class="primary-button" type="submit">Save movie</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="details-modal" role="dialog" aria-modal="true" aria-labelledby="details-title">
+    <div class="modal details-modal"><button class="close-button details-close" data-close="details-modal" aria-label="Close">×</button><div class="details-content" id="movie-details-content"></div></div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
